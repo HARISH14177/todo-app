@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'; 
 import { Modal, Button, Form } from 'react-bootstrap';
 
+
 const App=()=> {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Read recommended book again', completed: true },
@@ -13,6 +14,22 @@ const App=()=> {
     { id: 3, text: 'Cook dinner', completed: false },
     { id: 4, text: 'Sign up for training', completed: false },
   ]);
+const API_URL = 'https://mern-stack-backend-qbnc.onrender.com/todos';
+
+useEffect(() => {
+    const fetchTodos = async () => {
+        try {
+            const response = await fetch('https://mern-stack-backend-qbnc.onrender.com/todos');
+            const data = await response.json();
+            setTodos(data);
+        } catch (error) {
+            console.error('Error fetching todos:', error);
+        }
+    };
+
+    fetchTodos();
+}, []);
+
   const [filter, setFilter] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
