@@ -14,21 +14,9 @@ const App=()=> {
     { id: 3, text: 'Cook dinner', completed: false },
     { id: 4, text: 'Sign up for training', completed: false },
   ]);
-const API_URL = 'https://mern-stack-backend-qbnc.onrender.com/todos';
 
-useEffect(() => {
-    const fetchTodos = async () => {
-        try {
-            const response = await fetch('https://mern-stack-backend-qbnc.onrender.com/todos');
-            const data = await response.json();
-            setTodos(data);
-        } catch (error) {
-            console.error('Error fetching todos:', error);
-        }
-    };
 
-    fetchTodos();
-}, []);
+
 
   const [filter, setFilter] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
